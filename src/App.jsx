@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Search from './components/Search'
 import Loading from './components/Loading';
+import MovieCard from './components/MovieCard';
 
 const TMDB_API_URL = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc";
 const TMDB_API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -61,7 +62,7 @@ function App() {
                     <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
                 </header>
                 <section className='all-movies'>
-                     <h2>all movies</h2>
+                     <h2 className='mt-[45px]'>all movies</h2>
                      {isLoading ? (
                         <Loading/>
                      ) : errorMessage ? (
@@ -69,7 +70,7 @@ function App() {
                      ) : (
                         <ul>
                             {movieList.map(movie => (
-                                <p key={movie.id} className='text-white'>{movie.title}</p>
+                                <MovieCard key={movie.id} movie={movie} />
                             ))}
                         </ul>
                      )}
