@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Search from './components/Search'
+import Loading from './components/Loading';
 
 const TMDB_API_URL = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc";
 const TMDB_API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -62,7 +63,7 @@ function App() {
                 <section className='all-movies'>
                      <h2>all movies</h2>
                      {isLoading ? (
-                        <p className='text-white'>Loading...</p>
+                        <Loading/>
                      ) : errorMessage ? (
                         <p className='tet-red-500'>{errorMessage}</p>
                      ) : (
